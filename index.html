@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f6f5c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Te Reo">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>Te Reo Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Te Reo Māori</h1>
+    <nav class="tabs">
+      <button id="tab-study" type="button" class="active">Study</button>
+      <button id="tab-progress" type="button">Progress</button>
+    </nav>
+
+    <div id="study">
+      <div class="bar">
+        <select id="topic" aria-label="Topic"></select>
+        <button id="mode" type="button"></button>
+        <span id="score"></span>
+      </div>
+      <p id="due"></p>
+
+      <section id="done" hidden>
+        <p>Kua oti! You're all caught up for now.</p>
+        <button id="practice" type="button">Practise anyway</button>
+      </section>
+
+      <section id="flash">
+        <button id="card" type="button" aria-live="polite"></button>
+        <p class="hint">Tap the card to flip</p>
+        <div class="row">
+          <button id="speak" type="button" aria-label="Hear it">🔊</button>
+          <button id="again" type="button">Still learning</button>
+          <button id="got" type="button">Got it</button>
+        </div>
+      </section>
+
+      <section id="quiz" hidden>
+        <p id="prompt"></p>
+        <button id="speak2" type="button" aria-label="Hear it">🔊</button>
+        <div id="choices"></div>
+        <p id="feedback" aria-live="polite"></p>
+        <button id="next" type="button" hidden>Next</button>
+      </section>
+    </div>
+
+    <div id="progress" hidden>
+      <div class="stats" id="stats"></div>
+      <h2>By topic</h2>
+      <div id="topics"></div>
+      <button id="reset" type="button" class="danger">Reset progress</button>
+    </div>
+  </main>
+  <script src="vocab.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
