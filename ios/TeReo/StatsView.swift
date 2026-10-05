@@ -38,6 +38,14 @@ struct StatsView: View {
                     }
                 }
 
+                Section("Credits") {
+                    Text("Some audio recordings: NZ History, Manatū Taonga Ministry for Culture & Heritage, CC BY-NC 3.0 NZ.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Link("nzhistory.govt.nz", destination: URL(string: "https://nzhistory.govt.nz/culture/maori-language-week/100-maori-words")!)
+                        .font(.footnote)
+                }
+
                 Section {
                     Button("Reset progress", role: .destructive) { confirmReset = true }
                 }

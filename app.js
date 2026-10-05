@@ -48,11 +48,16 @@ function speakWithVoice(word) {
   speechSynthesis.speak(u);
 }
 
-// Plays audio/<slug>.m4a if it exists, otherwise falls back to the browser voice.
+// Plays audio/<slug>.m4a (or .mp3) if it exists, otherwise falls back to the browser voice.
 function speak(word) {
-  const audio = new Audio(word.audio || `audio/${slug(word.reo)}.m4a`);
-  audio.onerror = () => speakWithVoice(word);
-  audio.play().catch(() => speakWithVoice(word));
+  const urls = word.audio ? [word.audio] : ["m4a", "mp3"].map((ext) => `audio/${slug(word.reo)}.${ext}`);
+  const tryNext = () => {
+    if (!urls.length) return speakWithVoice(word);
+    const audio = new Audio(urls.shift());
+    audio.onerror = tryNext;
+    audio.play().catch(tryNext);
+  };
+  tryNext();
 }
 
 // ---- Study ---------------------------------------------------------------

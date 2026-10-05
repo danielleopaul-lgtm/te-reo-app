@@ -46,3 +46,5 @@ button { cursor: pointer; }
 .topic-row .meter { height: 8px; border-radius: 4px; background: var(--line); overflow: hidden; margin-top: 4px; }
 .topic-row .meter i { display: block; height: 100%; background: var(--accent); }
 .danger { margin-top: 32px; color: var(--danger); border-color: var(--danger); }
+.credit { margin-top: 32px; font-size: .75rem; opacity: .6; text-align: center; }
+.credit a { color: inherit; }
