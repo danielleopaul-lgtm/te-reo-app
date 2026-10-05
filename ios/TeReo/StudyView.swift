@@ -96,13 +96,15 @@ struct StudyView: View {
                 .buttonStyle(.bordered)
                 .accessibilityLabel("Hear it")
 
-                Button("Still learning") { grade(word, correct: false) }
-                    .buttonStyle(.bordered)
-                    .frame(maxWidth: .infinity, minHeight: 44)
+                Button { grade(word, correct: false) } label: {
+                    Text("Still learning").frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.bordered)
 
-                Button("Got it") { grade(word, correct: true) }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity, minHeight: 44)
+                Button { grade(word, correct: true) } label: {
+                    Text("Got it").frame(maxWidth: .infinity, minHeight: 44)
+                }
+                .buttonStyle(.borderedProminent)
             }
         }
     }

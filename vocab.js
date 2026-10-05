@@ -1,6 +1,6 @@
 // Vocabulary. Each entry: { reo, en, topic, audio? }
-// `audio` is an optional path to a real recording (e.g. "audio/kia-ora.mp3");
-// without it the app falls back to the browser's text-to-speech.
+// Recordings go in audio/ named by word, e.g. audio/kia-ora.m4a (see scripts/audio.py).
+// Without a recording the app falls back to text-to-speech.
 const VOCAB = [
   // Greetings
   { reo: "Kia ora", en: "Hello / thanks", topic: "Greetings" },

@@ -36,14 +36,23 @@ function streak() {
 }
 
 // ---- Audio ---------------------------------------------------------------
-function speak(word) {
-  if (word.audio) { new Audio(word.audio).play().catch(() => {}); return; }
+// File name for a word's recording, e.g. "Tēnā koe" -> "tena-koe". Matches scripts/audio.py.
+const slug = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function speakWithVoice(word) {
   if (!("speechSynthesis" in window)) return;
   const u = new SpeechSynthesisUtterance(word.reo.replace("___", ""));
   u.lang = "mi-NZ";
   u.rate = 0.8;
   speechSynthesis.cancel();
   speechSynthesis.speak(u);
+}
+
+// Plays audio/<slug>.m4a if it exists, otherwise falls back to the browser voice.
+function speak(word) {
+  const audio = new Audio(word.audio || `audio/${slug(word.reo)}.m4a`);
+  audio.onerror = () => speakWithVoice(word);
+  audio.play().catch(() => speakWithVoice(word));
 }
 
 // ---- Study ---------------------------------------------------------------
